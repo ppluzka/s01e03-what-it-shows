@@ -17,6 +17,8 @@ Start with [triage](/kb/triage/dedupe) if you are new on the desk.
 
 ## Pages
 
+[#4471 is three problems](/kb/incidents/4471-three)
+
 <KbIndex />
 
 ## Writing a page
