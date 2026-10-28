@@ -24,13 +24,11 @@ export function problemsOf(
   const moved = new Set(oneDayIds);
   const buckets = new Map<ProblemId, Report[]>(ORDER.map((id) => [id, []]));
   for (const r of merged) {
-    if (moved.has(r.id)) {
-      buckets.get('one-day-move')!.push(r);
-      continue;
-    }
     const cause = causeOf(r, tenantOf(r));
     const id: ProblemId = cause === 'hint' || cause === 'parser' ? cause : 'unplaced';
     buckets.get(id)!.push(r);
+    // The desk still counts these inside the cause above. The separate group is the reading, not a subtraction.
+    if (moved.has(r.id)) buckets.get('one-day-move')!.push(r);
   }
   return ORDER.flatMap((id) => {
     const rs = buckets.get(id)!;

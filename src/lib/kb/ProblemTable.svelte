@@ -3,12 +3,12 @@
   import notes from '#lib/data/desk-notes.json';
   import { problemsOf } from '#lib/kb/problems';
   import { tenantOf } from '#lib/kb/locales';
-  import type { Report } from '#lib/kb/causes';
+  import { uniqueById, type Report } from '#lib/kb/causes';
 
   let { ticket }: { ticket: number } = $props();
 
   const groups = $derived(problemsOf(reports as Report[], tenantOf, notes.oneDayMove, ticket));
-  const total = $derived(groups.reduce((n, g) => n + g.reports.length, 0));
+  const total = $derived(uniqueById(reports as Report[]).filter((r) => r.mergedInto === ticket).length);
 </script>
 
 <p class="sum">
