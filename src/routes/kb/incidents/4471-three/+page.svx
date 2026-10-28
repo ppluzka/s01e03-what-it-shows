@@ -8,10 +8,8 @@ signature: Piotr Pluzka
 ---
 
 <script>
-  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
-
-  const signature = 'Piotr Pluzka';
 </script>
 
 #4471 merged every date report into one known issue and called it the parser. Reading the reports splits that ticket.
@@ -22,6 +20,6 @@ On booking-v3 the form prints `MM/DD/YYYY`. The form then reads the date the way
 
 The desk wrote down the reports it read as a one-day move, and still filed them under the parser. A one-day move shifts the date by a day.
 
-<ProblemTable ticket={4471} />
+<CauseTable ticket={4471} />
 
 <RenderStamp {signature} />
